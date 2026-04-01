@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 
 /** Custom Models */
 import { Transactions } from '../model/transaction.model';
-import { TransactionDetails } from '../model/transaction-details.model';
+import { TransactionDetails, InvestigationSummary } from '../model/transaction-details.model';
 import { Currency } from '../model/currency.model';
 import { DfspEntry } from '../model/dfsp.model';
 
@@ -52,8 +52,10 @@ export class TransactionsService {
     return this.http.post('/api/v1/transfer/' + id + '/refund', comment);
   }
 
-  generateInvestigationSummary(workflowInstanceKey: string): Observable<any> {
-    return this.http.post('/api/v1/transfer/' + workflowInstanceKey + '/investigation-summary', {});
+  generateInvestigationSummary(workflowInstanceKey: string): Observable<InvestigationSummary> {
+    return this.http.post('/api/v1/transfer/' + workflowInstanceKey + '/investigation-summary', {}).pipe(
+      map((response: any) => response as InvestigationSummary)
+    );
   }
 
   /**
