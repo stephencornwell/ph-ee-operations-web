@@ -6,6 +6,12 @@
   <button mat-raised-button color="primary" (click)="openBPMNDialog()">
     BPMN Diagram
   </button>
+
+  <button mat-raised-button color="accent"
+          (click)="openInvestigationSummaryDialog()"
+          *ngIf="datasource.transfer?.status === 'FAILED' || datasource.transfer?.status === 'IN_PROGRESS' || datasource.transfer?.status === 'ACTION_NEEDED'">
+    Generate Summary
+  </button>
 </div>
 
 <div class="container">

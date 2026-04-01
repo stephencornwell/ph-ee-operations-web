@@ -1,0 +1,54 @@
+<h2 mat-dialog-title>Investigation Summary ({{workflowInstanceKey}})</h2>
+
+<mat-dialog-content>
+
+  <div *ngIf="isLoading" class="loading-container">
+    <mat-spinner diameter="48"></mat-spinner>
+  </div>
+
+  <div *ngIf="!isLoading && errorMessage" class="error-container">
+    <p class="error-message">{{errorMessage}}</p>
+    <button mat-raised-button color="primary" (click)="loadSummary()">Retry</button>
+  </div>
+
+  <div *ngIf="!isLoading && !errorMessage && summary">
+
+    <div *ngIf="summary.cached" class="cached-indicator">
+      Cached summary from {{summary.generatedAt}}
+    </div>
+
+    <mat-card class="summary-card">
+      <mat-card-title>Summary</mat-card-title>
+      <mat-card-content>
+        <p>{{summary.summary}}</p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card *ngIf="summary.rootCause" class="summary-card">
+      <mat-card-title>Root Cause</mat-card-title>
+      <mat-card-content>
+        <p>{{summary.rootCause}}</p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card *ngIf="summary.timeline && summary.timeline.length > 0" class="summary-card">
+      <mat-card-title>Key Events</mat-card-title>
+      <mat-card-content>
+        <ol class="timeline-list">
+          <li *ngFor="let event of summary.timeline">{{event}}</li>
+        </ol>
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-raised-button color="warn" [mat-dialog-close]="">Close</button>
+  <button mat-raised-button color="primary"
+          *ngIf="!isLoading && !errorMessage && summary"
+          (click)="copyToClipboard()">
+    Copy to Clipboard
+  </button>
+</mat-dialog-actions>
