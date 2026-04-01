@@ -52,6 +52,10 @@ export class TransactionsService {
     return this.http.post('/api/v1/transfer/' + id + '/refund', comment);
   }
 
+  generateInvestigationSummary(workflowInstanceKey: string): Observable<any> {
+    return this.http.post('/api/v1/transfer/' + workflowInstanceKey + '/investigation-summary', {});
+  }
+
   /**
    * Get details of a Transaction.
    *

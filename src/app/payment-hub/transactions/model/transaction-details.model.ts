@@ -25,3 +25,13 @@ export interface TransactionEntry {
   name: string;
   value: string;
 }
+
+export interface InvestigationSummary {
+  summary: string;
+  status: string;
+  rootCause: string;
+  timeline: string[];
+  workflowInstanceKey: number;
+  generatedAt: string;
+  cached: boolean;
+}

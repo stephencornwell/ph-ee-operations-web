@@ -17,6 +17,7 @@ import { transactionStatusData as statuses } from './helper/transaction.helper';
 import { BpmnDialogComponent } from './bpmn-dialog/bpmn-dialog.component';
 import { FormDialogComponent } from 'app/shared/form-dialog/form-dialog.component';
 import { RetryResolveDialogComponent } from './retry-resolve-dialog/retry-resolve-dialog.component';
+import { InvestigationSummaryDialogComponent } from './investigation-summary-dialog/investigation-summary-dialog.component';
 
 /** Custom Models */
 import { FormfieldBase } from 'app/shared/form-dialog/formfield/model/formfield-base';
@@ -192,6 +193,13 @@ export class TransactionDetailsComponent implements OnInit {
         action: action,
         workflowInstanceKey: workflowInstanceKey
       },
+    });
+  }
+
+  openInvestigationSummaryDialog() {
+    this.dialog.open(InvestigationSummaryDialogComponent, {
+      data: { workflowInstanceKey: this.datasource.transfer.workflowInstanceKey },
+      width: '600px'
     });
   }
 

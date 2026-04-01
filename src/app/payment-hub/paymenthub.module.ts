@@ -13,6 +13,7 @@ import { PaymentHubComponent } from './paymenthub.component';
 import { TransactionDetailsComponent } from './transactions/transaction-details.component';
 import { BpmnDialogComponent } from './transactions/bpmn-dialog/bpmn-dialog.component';
 import { RetryResolveDialogComponent } from './transactions/retry-resolve-dialog/retry-resolve-dialog.component';
+import { InvestigationSummaryDialogComponent } from './transactions/investigation-summary-dialog/investigation-summary-dialog.component';
 import { FilterSelectorComponent } from './filter-selector/filter-selector.component';
 import { BatchesComponent } from './batches/batches.component';
 import { SubBatchesComponent } from './sub-batches/sub-batches.component';
@@ -42,6 +43,7 @@ import { SubBatchSummaryComponent } from './transfers/sub-batch-summary/sub-batc
         PaymentHubComponent,
         BpmnDialogComponent,
         RetryResolveDialogComponent,
+        InvestigationSummaryDialogComponent,
         FilterSelectorComponent,
         BatchesComponent,
         SubBatchesComponent,
